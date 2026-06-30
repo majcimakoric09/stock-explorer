@@ -65,3 +65,17 @@ flowchart LR
 pip install streamlit pandas plotly yfinance
 streamlit run app.py
 ```
+
+---
+
+## Reflection
+
+This was my first time building and deploying a full data app from scratch, and it taught me more than I expected.
+
+The hardest part was working with real market data. I initially assumed stock prices could be compared directly, but quickly learned they need to be **normalised** — indexed to 1.00 at the start of the period — otherwise a €3,000 stock always looks bigger than a €150 stock regardless of how it actually performed. Getting that mental model right changed how I read the charts.
+
+I also underestimated how much effort goes into making something feel good on mobile. Streamlit's column layout doesn't stack automatically on small screens, so I had to write custom CSS media queries to force the columns to collapse vertically. That was frustrating at first but made me appreciate how much work goes into responsive design.
+
+The investment calculator surprised me most in terms of usefulness. Showing a simple total return is fine, but switching to **CAGR (Compound Annual Growth Rate)** made the numbers feel real — a 900% total return over 10 years sounds abstract, but "roughly +26% per year" is something you can actually reason about.
+
+If I were to continue this project, I would add a portfolio builder where users can mix multiple stocks with custom weights, and a proper news feed that filters by the stocks the user has selected rather than always showing Apple headlines.
