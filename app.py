@@ -4,7 +4,7 @@ import streamlit as st
 import yfinance as yf
 
 st.set_page_config(page_title="Big Tech Stock Explorer", layout="wide", page_icon="📈",
-                   initial_sidebar_state="expanded")
+                   initial_sidebar_state="collapsed")
 
 st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -88,6 +88,51 @@ st.markdown("""
 
     /* ── Caption ── */
     .stCaption { color: #555 !important; font-size: 0.78rem; }
+
+    /* ── Mobile responsive ── */
+    @media (max-width: 768px) {
+        /* Stack all st.columns() vertically */
+        [data-testid="stHorizontalBlock"] {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        [data-testid="column"] {
+            width: 100% !important;
+            flex: none !important;
+            min-width: 100% !important;
+        }
+
+        /* Tighten main content padding */
+        .main .block-container {
+            padding: 1rem 0.75rem 2rem !important;
+            max-width: 100% !important;
+        }
+
+        /* Title */
+        h1 { font-size: 1.6rem !important; line-height: 1.3 !important; }
+        h2, h3 { font-size: 1.05rem !important; }
+
+        /* Metrics readable on small screens */
+        [data-testid="stMetricValue"] { font-size: 1.5rem !important; }
+        [data-testid="stMetricLabel"] { font-size: 0.75rem !important; }
+
+        /* Info boxes */
+        .stApp div[style*="border-radius"] {
+            padding: 12px 14px !important;
+            font-size: 0.88rem !important;
+        }
+
+        /* Quote font size */
+        .stApp div[style*="1.15rem"] {
+            font-size: 0.98rem !important;
+        }
+
+        /* Sidebar */
+        section[data-testid="stSidebar"] {
+            width: 85vw !important;
+            min-width: unset !important;
+        }
+    }
 
 </style>
 """, unsafe_allow_html=True)
@@ -233,7 +278,7 @@ fig.update_layout(
 )
 fig.update_xaxes(gridcolor="#e0e8f5")
 fig.update_yaxes(gridcolor="#e0e8f5")
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True, config={"responsive": True})
 
 # ── Bar chart ─────────────────────────────────────────────────────────────
 st.subheader("Total Growth Comparison")
@@ -257,7 +302,7 @@ bar_fig.update_layout(
     title_font=dict(color="#0d2d6b", size=15)
 )
 bar_fig.update_yaxes(gridcolor="#e0e8f5")
-st.plotly_chart(bar_fig, use_container_width=True)
+st.plotly_chart(bar_fig, use_container_width=True, config={"responsive": True})
 
 # ── Annual returns chart ───────────────────────────────────────────────────
 st.subheader("Annual Returns by Year")
@@ -291,7 +336,7 @@ annual_fig.update_layout(
     xaxis=dict(tickmode="linear", dtick=1),
 )
 annual_fig.update_yaxes(gridcolor="#e0e8f5", zeroline=False)
-st.plotly_chart(annual_fig, use_container_width=True)
+st.plotly_chart(annual_fig, use_container_width=True, config={"responsive": True})
 
 st.divider()
 st.caption("Data source: Yahoo Finance via yfinance · App by Maja")
