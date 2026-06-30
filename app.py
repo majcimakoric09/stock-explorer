@@ -2,6 +2,9 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 import yfinance as yf
+import urllib.request
+import xml.etree.ElementTree as ET
+import datetime, hashlib, ssl
 
 st.set_page_config(page_title="Big Tech Stock Explorer", layout="wide", page_icon="📈",
                    initial_sidebar_state="collapsed")
@@ -264,16 +267,40 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Latest Apple News ──────────────────────────────────────────────────────
+@st.cache_data(ttl=1800)
+def fetch_apple_news():
+    try:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        req = urllib.request.Request(
+            "https://finance.yahoo.com/rss/headline?s=AAPL",
+            headers={"User-Agent": "Mozilla/5.0"}
+        )
+        with urllib.request.urlopen(req, context=ctx, timeout=6) as r:
+            tree = ET.parse(r)
+        items = tree.findall(".//item")[:3]
+        return [(item.findtext("title"), item.findtext("link")) for item in items]
+    except Exception:
+        return []
+
 st.divider()
 st.markdown("<h3>Latest Apple News</h3>", unsafe_allow_html=True)
-st.markdown("""
+news_items = fetch_apple_news()
+today = datetime.date.today().strftime("%d %b %Y")
+if news_items:
+    links_html = "".join(
+        f'<b>{i+1}.</b> <a href="{url}" target="_blank" style="color:#1a56db;">{title}</a><br>'
+        for i, (title, url) in enumerate(news_items)
+    )
+    st.markdown(f"""
 <div style="background:#f5f5f5; border-radius:8px; padding:18px 22px; color:#111; font-size:0.93rem; line-height:2;">
-    <span style="color:#888; font-size:0.8rem;">Headlines fetched from Yahoo Finance · 30 Jun 2026</span><br><br>
-    <b>1.</b> <a href="https://finance.yahoo.com/markets/stocks/articles/not-constructive-tim-cook-blames-121500109.html" style="color:#1a56db;">'Not constructive': Tim Cook blames Micron for Apple's $300 price hike — Micron suggests Apple helped cause the shortage</a><br>
-    <b>2.</b> <a href="https://finance.yahoo.com/markets/stocks/articles/apple-supplier-leak-exposes-iphone-121410097.html" style="color:#1a56db;">Apple Supplier Leak Exposes iPhone 18 Details</a><br>
-    <b>3.</b> <a href="https://finance.yahoo.com/markets/stocks/articles/apple-supplier-luxshare-plans-hong-122639512.html" style="color:#1a56db;">Apple Supplier Luxshare Plans Hong Kong Share Sale</a>
+    <span style="color:#888; font-size:0.8rem;">Live headlines from Yahoo Finance · {today}</span><br><br>
+    {links_html}
 </div>
 """, unsafe_allow_html=True)
+else:
+    st.info("Could not load news headlines right now — try refreshing.")
 
 st.divider()
 
@@ -415,7 +442,6 @@ st.divider()
 st.caption("Data source: Yahoo Finance via yfinance · App by Maja")
 
 # ── Daily investing quote ──────────────────────────────────────────────────
-import datetime, hashlib
 
 QUOTES = [
     ("The stock market is a device for transferring money from the impatient to the patient.", "Warren Buffett"),
