@@ -338,6 +338,51 @@ annual_fig.update_layout(
 annual_fig.update_yaxes(gridcolor="#e0e8f5", zeroline=False)
 st.plotly_chart(annual_fig, use_container_width=True, config={"responsive": True})
 
+# ── Podcast recommendations ────────────────────────────────────────────────
+st.divider()
+st.subheader("Podcasts Worth Listening To")
+st.markdown("""
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-top:8px;">
+
+  <div style="background:#f0f4ff; border-left:4px solid #1a56db; border-radius:8px; padding:16px 18px;">
+    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">We Study Billionaires</div>
+    <div style="font-size:0.8rem; color:#1a56db; font-weight:700; margin:4px 0 8px;">The Investors Podcast Network</div>
+    <div style="font-size:0.88rem; color:#333; line-height:1.5;">Deep dives into how the world's greatest investors think — Buffett, Munger, Lynch and beyond. Great for long-term value investing mindset.</div>
+  </div>
+
+  <div style="background:#f0f4ff; border-left:4px solid #2a9d8f; border-radius:8px; padding:16px 18px;">
+    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Invest Like the Best</div>
+    <div style="font-size:0.8rem; color:#2a9d8f; font-weight:700; margin:4px 0 8px;">Patrick O'Shaughnessy</div>
+    <div style="font-size:0.88rem; color:#333; line-height:1.5;">Conversations with top investors and business leaders. Covers everything from public equities to venture capital and company building.</div>
+  </div>
+
+  <div style="background:#f0f4ff; border-left:4px solid #e63946; border-radius:8px; padding:16px 18px;">
+    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Planet Money</div>
+    <div style="font-size:0.8rem; color:#e63946; font-weight:700; margin:4px 0 8px;">NPR</div>
+    <div style="font-size:0.88rem; color:#333; line-height:1.5;">Short, story-driven episodes that explain economic concepts and market events in plain language. Perfect for building financial intuition.</div>
+  </div>
+
+  <div style="background:#f0f4ff; border-left:4px solid #f4a261; border-radius:8px; padding:16px 18px;">
+    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Masters in Business</div>
+    <div style="font-size:0.8rem; color:#f4a261; font-weight:700; margin:4px 0 8px;">Bloomberg · Barry Ritholtz</div>
+    <div style="font-size:0.88rem; color:#333; line-height:1.5;">Long-form interviews with the most influential figures in finance, economics and investing. Thoughtful and in-depth every episode.</div>
+  </div>
+
+  <div style="background:#f0f4ff; border-left:4px solid #8338ec; border-radius:8px; padding:16px 18px;">
+    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">The Tim Ferriss Show</div>
+    <div style="font-size:0.8rem; color:#8338ec; font-weight:700; margin:4px 0 8px;">Tim Ferriss</div>
+    <div style="font-size:0.88rem; color:#333; line-height:1.5;">World-class performers share their routines, strategies and mental models — many episodes touch on investing, wealth and decision-making.</div>
+  </div>
+
+  <div style="background:#f0f4ff; border-left:4px solid #118ab2; border-radius:8px; padding:16px 18px;">
+    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Acquired</div>
+    <div style="font-size:0.8rem; color:#118ab2; font-weight:700; margin:4px 0 8px;">Ben Gilbert & David Rosenthal</div>
+    <div style="font-size:0.88rem; color:#333; line-height:1.5;">Exhaustive deep dives on the greatest companies of all time — Apple, NVIDIA, Microsoft and more. Essential listening for any Big Tech investor.</div>
+  </div>
+
+</div>
+""", unsafe_allow_html=True)
+
 st.divider()
 st.caption("Data source: Yahoo Finance via yfinance · App by Maja")
 
@@ -378,3 +423,22 @@ st.markdown(f"""
     <div style="margin-top:6px; font-size:0.75rem; color:#aaa;">Quote of the day · updates every morning</div>
 </div>
 """, unsafe_allow_html=True)
+
+# ── Podcast recommendations ────────────────────────────────────────────────
+st.divider()
+st.subheader("🎙️ Want to learn more about investing?")
+st.markdown("Here are some podcasts worth listening to:")
+
+podcasts = [
+    ("We Study Billionaires", "Breaks down how the world's best investors think — great for beginners and experienced investors alike.", "https://theinvestorspodcast.com"),
+    ("Invest Like the Best", "Deep interviews with top fund managers and founders about markets, business, and strategy.", "https://joincolossus.com/shows/invest-like-the-best/"),
+    ("Planet Money (NPR)", "Makes economics and finance fun and easy to understand — perfect if you're just getting started.", "https://www.npr.org/podcasts/510289/planet-money"),
+    ("The Tim Ferriss Show", "Not purely finance, but covers wealth-building, habits, and mindset from world-class performers.", "https://tim.blog/podcast/"),
+]
+
+for name, desc, url in podcasts:
+    st.markdown(f"""
+<div style="background:#f0f4ff; border-left:4px solid #1a56db; border-radius:6px; padding:14px 18px; margin-bottom:10px; color:#111;">
+    <a href="{url}" target="_blank" style="color:#1a56db; font-weight:700; font-size:1rem; text-decoration:none;">🎧 {name}</a>
+    <div style="margin-top:4px; font-size:0.88rem; color:#444;">{desc}</div>
+</div>""", unsafe_allow_html=True)
