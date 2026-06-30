@@ -179,6 +179,7 @@ for i, t in enumerate(chosen):
 st.sidebar.markdown("---")
 st.sidebar.subheader("Investment Calculator")
 investment = st.sidebar.number_input("If I had invested (€)", min_value=100, max_value=1_000_000, value=1000, step=100)
+inv_view = st.sidebar.radio("Show results as", ["Total", "Per Year (CAGR)", "Per Month"], horizontal=True)
 
 # 📅 Date range slider
 st.sidebar.markdown("---")
@@ -229,11 +230,26 @@ col2.markdown(f"""
 
 # 💸 Investment calculator results
 st.subheader("What if you had invested?")
+import datetime as _dt
+years_held = max((date_range[1] - date_range[0]).days / 365.25, 0.01)
+months_held = max((date_range[1] - date_range[0]).days / 30.44, 0.01)
+
 inv_cols = st.columns(len(chosen))
 for col, t in zip(inv_cols, chosen):
     final_value = investment * dff[t].iloc[-1]
     profit = final_value - investment
-    col.metric(f"{t}", f"€{final_value:,.0f}", f"€{profit:+,.0f} profit")
+    growth_multiple = dff[t].iloc[-1]
+
+    if inv_view == "Total":
+        col.metric(t, f"€{final_value:,.0f}", f"€{profit:+,.0f} total profit")
+    elif inv_view == "Per Year (CAGR)":
+        cagr = (growth_multiple ** (1 / years_held) - 1) * 100
+        avg_profit_yr = profit / years_held
+        col.metric(t, f"{cagr:+.1f}% / year", f"≈ €{avg_profit_yr:,.0f} avg. profit/yr")
+    else:
+        monthly_rate = (growth_multiple ** (1 / months_held) - 1) * 100
+        avg_profit_mo = profit / months_held
+        col.metric(t, f"{monthly_rate:+.2f}% / month", f"≈ €{avg_profit_mo:,.0f} avg. profit/mo")
 
 # ── Did you know ──────────────────────────────────────────────────────────
 st.divider()
