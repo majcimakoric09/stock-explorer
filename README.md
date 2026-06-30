@@ -4,6 +4,8 @@ A Streamlit app built by Maja for exploring and comparing Big Tech stock perform
 
 **Live app:** https://stock-explorer-cdnnu783kdmuqkqsv5cspv.streamlit.app
 
+![App Screenshot](screenshot.png)
+
 ---
 
 ## Architecture
