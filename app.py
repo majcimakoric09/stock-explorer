@@ -98,6 +98,7 @@ st.divider()
 
 ALL_TICKERS = ["AAPL", "MSFT", "GOOG", "AMZN", "NFLX", "META", "MRNA", "INTC", "AMD", "PFE", "PSKY", "^GSPC"]
 
+
 @st.cache_data(ttl=3600)
 def load_data():
     raw = yf.download(ALL_TICKERS, start="2016-01-01", progress=False, auto_adjust=True)
@@ -132,7 +133,7 @@ for i, t in enumerate(chosen):
 # 💸 Investment calculator
 st.sidebar.markdown("---")
 st.sidebar.subheader("Investment Calculator")
-investment = st.sidebar.number_input("If I had invested ($)", min_value=100, max_value=1_000_000, value=1000, step=100)
+investment = st.sidebar.number_input("If I had invested (€)", min_value=100, max_value=1_000_000, value=1000, step=100)
 
 # 📅 Date range slider
 st.sidebar.markdown("---")
@@ -187,7 +188,7 @@ inv_cols = st.columns(len(chosen))
 for col, t in zip(inv_cols, chosen):
     final_value = investment * dff[t].iloc[-1]
     profit = final_value - investment
-    col.metric(f"{t}", f"${final_value:,.0f}", f"{profit:+,.0f} profit")
+    col.metric(f"{t}", f"€{final_value:,.0f}", f"€{profit:+,.0f} profit")
 
 # ── Did you know ──────────────────────────────────────────────────────────
 st.divider()
