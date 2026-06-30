@@ -423,22 +423,3 @@ st.markdown(f"""
     <div style="margin-top:6px; font-size:0.75rem; color:#aaa;">Quote of the day · updates every morning</div>
 </div>
 """, unsafe_allow_html=True)
-
-# ── Podcast recommendations ────────────────────────────────────────────────
-st.divider()
-st.subheader("🎙️ Want to learn more about investing?")
-st.markdown("Here are some podcasts worth listening to:")
-
-podcasts = [
-    ("We Study Billionaires", "Breaks down how the world's best investors think — great for beginners and experienced investors alike.", "https://theinvestorspodcast.com"),
-    ("Invest Like the Best", "Deep interviews with top fund managers and founders about markets, business, and strategy.", "https://joincolossus.com/shows/invest-like-the-best/"),
-    ("Planet Money (NPR)", "Makes economics and finance fun and easy to understand — perfect if you're just getting started.", "https://www.npr.org/podcasts/510289/planet-money"),
-    ("The Tim Ferriss Show", "Not purely finance, but covers wealth-building, habits, and mindset from world-class performers.", "https://tim.blog/podcast/"),
-]
-
-for name, desc, url in podcasts:
-    st.markdown(f"""
-<div style="background:#f0f4ff; border-left:4px solid #1a56db; border-radius:6px; padding:14px 18px; margin-bottom:10px; color:#111;">
-    <a href="{url}" target="_blank" style="color:#1a56db; font-weight:700; font-size:1rem; text-decoration:none;">🎧 {name}</a>
-    <div style="margin-top:4px; font-size:0.88rem; color:#444;">{desc}</div>
-</div>""", unsafe_allow_html=True)
