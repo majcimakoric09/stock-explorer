@@ -360,41 +360,53 @@ st.subheader("Podcasts Worth Listening To")
 st.markdown("""
 <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-top:8px;">
 
-  <div style="background:#f0f4ff; border-left:4px solid #1a56db; border-radius:8px; padding:16px 18px;">
-    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">We Study Billionaires</div>
+  <a href="https://www.theinvestorspodcast.com/we-study-billionaires/" target="_blank" style="text-decoration:none;">
+  <div style="background:#f0f4ff; border-left:4px solid #1a56db; border-radius:8px; padding:16px 18px; cursor:pointer; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(26,86,219,0.2)'" onmouseout="this.style.boxShadow='none'">
+    <div style="font-weight:800; color:#1a56db; font-size:1rem;">We Study Billionaires ↗</div>
     <div style="font-size:0.8rem; color:#1a56db; font-weight:700; margin:4px 0 8px;">The Investors Podcast Network</div>
     <div style="font-size:0.88rem; color:#333; line-height:1.5;">Deep dives into how the world's greatest investors think — Buffett, Munger, Lynch and beyond. Great for long-term value investing mindset.</div>
   </div>
+  </a>
 
-  <div style="background:#f0f4ff; border-left:4px solid #2a9d8f; border-radius:8px; padding:16px 18px;">
-    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Invest Like the Best</div>
+  <a href="https://joincolossus.com/shows/invest-like-the-best/" target="_blank" style="text-decoration:none;">
+  <div style="background:#f0f4ff; border-left:4px solid #2a9d8f; border-radius:8px; padding:16px 18px; cursor:pointer; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(42,157,143,0.2)'" onmouseout="this.style.boxShadow='none'">
+    <div style="font-weight:800; color:#2a9d8f; font-size:1rem;">Invest Like the Best ↗</div>
     <div style="font-size:0.8rem; color:#2a9d8f; font-weight:700; margin:4px 0 8px;">Patrick O'Shaughnessy</div>
     <div style="font-size:0.88rem; color:#333; line-height:1.5;">Conversations with top investors and business leaders. Covers everything from public equities to venture capital and company building.</div>
   </div>
+  </a>
 
-  <div style="background:#f0f4ff; border-left:4px solid #e63946; border-radius:8px; padding:16px 18px;">
-    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Planet Money</div>
+  <a href="https://www.npr.org/podcasts/510289/planet-money" target="_blank" style="text-decoration:none;">
+  <div style="background:#f0f4ff; border-left:4px solid #e63946; border-radius:8px; padding:16px 18px; cursor:pointer; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(230,57,70,0.2)'" onmouseout="this.style.boxShadow='none'">
+    <div style="font-weight:800; color:#e63946; font-size:1rem;">Planet Money ↗</div>
     <div style="font-size:0.8rem; color:#e63946; font-weight:700; margin:4px 0 8px;">NPR</div>
     <div style="font-size:0.88rem; color:#333; line-height:1.5;">Short, story-driven episodes that explain economic concepts and market events in plain language. Perfect for building financial intuition.</div>
   </div>
+  </a>
 
-  <div style="background:#f0f4ff; border-left:4px solid #f4a261; border-radius:8px; padding:16px 18px;">
-    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Masters in Business</div>
+  <a href="https://www.bloomberg.com/podcasts/masters_in_business" target="_blank" style="text-decoration:none;">
+  <div style="background:#f0f4ff; border-left:4px solid #f4a261; border-radius:8px; padding:16px 18px; cursor:pointer; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(244,162,97,0.2)'" onmouseout="this.style.boxShadow='none'">
+    <div style="font-weight:800; color:#f4a261; font-size:1rem;">Masters in Business ↗</div>
     <div style="font-size:0.8rem; color:#f4a261; font-weight:700; margin:4px 0 8px;">Bloomberg · Barry Ritholtz</div>
     <div style="font-size:0.88rem; color:#333; line-height:1.5;">Long-form interviews with the most influential figures in finance, economics and investing. Thoughtful and in-depth every episode.</div>
   </div>
+  </a>
 
-  <div style="background:#f0f4ff; border-left:4px solid #8338ec; border-radius:8px; padding:16px 18px;">
-    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">The Tim Ferriss Show</div>
+  <a href="https://tim.blog/podcast/" target="_blank" style="text-decoration:none;">
+  <div style="background:#f0f4ff; border-left:4px solid #8338ec; border-radius:8px; padding:16px 18px; cursor:pointer; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(131,56,236,0.2)'" onmouseout="this.style.boxShadow='none'">
+    <div style="font-weight:800; color:#8338ec; font-size:1rem;">The Tim Ferriss Show ↗</div>
     <div style="font-size:0.8rem; color:#8338ec; font-weight:700; margin:4px 0 8px;">Tim Ferriss</div>
     <div style="font-size:0.88rem; color:#333; line-height:1.5;">World-class performers share their routines, strategies and mental models — many episodes touch on investing, wealth and decision-making.</div>
   </div>
+  </a>
 
-  <div style="background:#f0f4ff; border-left:4px solid #118ab2; border-radius:8px; padding:16px 18px;">
-    <div style="font-weight:800; color:#0d2d6b; font-size:1rem;">Acquired</div>
+  <a href="https://www.acquired.fm/" target="_blank" style="text-decoration:none;">
+  <div style="background:#f0f4ff; border-left:4px solid #118ab2; border-radius:8px; padding:16px 18px; cursor:pointer; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(17,138,178,0.2)'" onmouseout="this.style.boxShadow='none'">
+    <div style="font-weight:800; color:#118ab2; font-size:1rem;">Acquired ↗</div>
     <div style="font-size:0.8rem; color:#118ab2; font-weight:700; margin:4px 0 8px;">Ben Gilbert & David Rosenthal</div>
     <div style="font-size:0.88rem; color:#333; line-height:1.5;">Exhaustive deep dives on the greatest companies of all time — Apple, NVIDIA, Microsoft and more. Essential listening for any Big Tech investor.</div>
   </div>
+  </a>
 
 </div>
 """, unsafe_allow_html=True)
